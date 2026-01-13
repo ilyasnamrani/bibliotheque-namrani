@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+//@FeignClient(name="MS-ETUDIANT",url="http://ms-etudiant:8083")
 
 @FeignClient(name="MS-ETUDIANT")
 public interface Etudiant15OpenFeign {

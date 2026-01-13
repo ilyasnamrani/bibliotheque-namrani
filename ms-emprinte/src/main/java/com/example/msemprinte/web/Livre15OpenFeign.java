@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
+//@FeignClient(name="MS-LIVRE",url="http://ms-livre:8084")
 @FeignClient(name="MS-LIVRE")
 public interface Livre15OpenFeign {
 
