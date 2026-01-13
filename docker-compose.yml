@@ -2,20 +2,17 @@ version: '3.8'
 
 services:
   ms-config:
-    build: ./ms-config
+    image: ilyasnamrani/ms-config:latest
     ports:
       - "9999:9999"
 
-
-
   ms-discovery:
-    build: ./ms-discovery
+    image: ilyasnamrani/ms-discovery:latest
     ports:
       - "8761:8761"
 
-
   ms-etudiant:
-    build: ./ms-etudiant
+    image: ilyasnamrani/ms-etudiant:latest
     ports:
       - "8083:8083"
     depends_on:
@@ -23,7 +20,7 @@ services:
       - ms-config
 
   ms-emprinte:
-    build: ./ms-emprinte
+    image: ilyasnamrani/ms-emprinte:latest
     ports:
       - "8082:8082"
     depends_on:
@@ -33,7 +30,7 @@ services:
       - ms-etudiant
 
   ms-livre:
-    build: ./ms-livre
+    image: ilyasnamrani/ms-livre:latest
     ports:
       - "8084:8084"
     depends_on:
