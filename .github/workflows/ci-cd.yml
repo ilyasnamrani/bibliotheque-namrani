@@ -20,7 +20,7 @@ jobs:
 
       - name: Build & Push ms-etudiant
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/ms-etudiant:latest ./ms-etudinat
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/ms-etudiant:latest ./ms-etudiant
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-etudiant:latest
 
       - name: Build & Push ms-livre
