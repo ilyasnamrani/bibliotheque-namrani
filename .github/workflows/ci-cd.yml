@@ -25,7 +25,7 @@ jobs:
       - name: Build ms-livre JAR
         run: mvn -f ./ms-livre/pom.xml clean package -DskipTests
 
-      - name: Build ms-emprinte JAR
+      - name: Build   ms-emprinte JAR
         run: mvn -f ./ms-emprinte/pom.xml clean package -DskipTests
 
       - name: Build ms-config JAR
