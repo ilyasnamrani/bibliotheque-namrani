@@ -28,6 +28,12 @@ jobs:
       - name: Build ms-emprinte JAR
         run: mvn -f ./ms-emprinte/pom.xml clean package -DskipTests
 
+      - name: Build ms-config JAR
+        run: mvn -f ./ms-config/pom.xml clean package -DskipTests
+
+      - name: Build ms-discovery JAR
+        run: mvn -f ./ms-discovery/pom.xml clean package -DskipTests
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -48,3 +54,15 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/ms-emprinte:latest ./ms-emprinte
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-emprinte:latest
+
+      - name: Build & Push ms-config
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/ms-config:latest ./ms-config
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-config:latest   
+
+      - name: Build & Push ms-discovery
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/ms-discovery:latest ./ms-discovery
+          docker push ${{ secrets.DOCKER_USERNAME }}/ms-discovery:latest 
+          
+  
