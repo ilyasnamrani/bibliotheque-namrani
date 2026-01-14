@@ -23,7 +23,7 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/ms-etudiant:latest ./ms-etudiant
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-etudiant:latest
 
-      - name: Build & Push ms-livre
+      - name: Build && Push ms-livre
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/ms-livre:latest ./ms-livre
           docker push ${{ secrets.DOCKER_USERNAME }}/ms-livre:latest
