@@ -5,6 +5,7 @@ import com.example.msemprinte.models.Etudiant15;
 import com.example.msemprinte.models.Livre15;
 import com.example.msemprinte.repositories.Emprinte15Repository;
 import org.springframework.beans.BeanUtils;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class Emprinte15Controller {
         this.livre15OpenFeign = livre15OpenFeign;
         this.etudiant15OpenFeign = etudiant15OpenFeign;
     }
-
-     @GetMapping("/emprintes/all")
+     //@PreAuthorize("hasAnyAuthority('ADMIN')")
+     @GetMapping("/empruntes/all")
     public List<Emprinte15>  getAll() {
         List<Etudiant15> etudiant15s = etudiant15OpenFeign.getAll();
         List<Livre15> livres15 = livre15OpenFeign.getAll();
@@ -43,7 +44,7 @@ public class Emprinte15Controller {
         }
         return emprintes;
     }
-    @GetMapping("/emprintes/{id}")
+    @GetMapping("/empruntes/{id}")
     public Emprinte15 getById(@PathVariable Long id) {
         Optional<Emprinte15> emprinte = emprinteRepository.findById(id);
             Etudiant15 etudiant15 = etudiant15OpenFeign.getById(emprinte.get().getIdEtudiant());
@@ -53,19 +54,19 @@ public class Emprinte15Controller {
            return emprinte.get();
         }
 
-        @PostMapping("/emprintes")
+        @PostMapping("/empruntes")
     public Emprinte15 create(@RequestBody Emprinte15 emprinte) {
         return emprinteRepository.save(emprinte);
     }
 
-    @PutMapping("/emprintes/{id}")
+    @PutMapping("/empruntes/{id}")
     public Emprinte15  update(@PathVariable Long id, @RequestBody Emprinte15 emprinte) {
 
         Emprinte15 emprinte1 = emprinteRepository.findById(id).get();
         BeanUtils.copyProperties(emprinte, emprinte1);
         return emprinteRepository.save(emprinte1);
     }
-    @DeleteMapping("/emprintes/{id}")
+    @DeleteMapping("/empruntes/{id}")
     public void delete(@PathVariable Long id) {
         emprinteRepository.deleteById(id);
     }
